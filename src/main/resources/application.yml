@@ -1,0 +1,20 @@
+amazon:
+       dynamodb:
+          endpoint: dynamodb.us-east-1.amazonaws.com
+          prefix: dev
+       aws:
+           accesskey: AKIAQ4HAJ3MU6PU2MJR7
+           secretkey: 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
+           region: us-east-1
+server:
+    port: 8070
+
+spring:
+      jackson:
+              serialization:
+                           indent_output: true
+
+
+
+cors.allowsorigins:  http://localhost:8070,http://localhost
+
