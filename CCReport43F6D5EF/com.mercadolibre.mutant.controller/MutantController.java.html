@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MutantController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.mercadolibre.mutant.controller</a> &gt; <span class="el_source">MutantController.java</span></div><h1>MutantController.java</h1><pre class="source lang-java linenums">package com.mercadolibre.mutant.controller;
+
+import com.mercadolibre.mutant.model.Dna;
+import com.mercadolibre.mutant.model.StatusModel;
+import com.mercadolibre.mutant.service.MutantService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+
+/**
+
+ * Esta clase define el Controlador Mutans, la recepcion, de cuerpos json o parametros,llamado de los servicio , procesamiento y devuelta de la respuesta solicitada
+
+ * @author: Edison A. Alvear Pabon
+
+ * @version: 18/03/2022/
+
+ */
+
+
+
+@RestController
+@RequestMapping(&quot;/v1/&quot;)
+
+<span class="fc" id="L30">public class MutantController {</span>
+
+    //Campos de la clase
+    @Autowired
+    private MutantService mutantService;
+
+<span class="fc" id="L36">    private static final Logger LOG = LoggerFactory.getLogger(MutantController.class);</span>
+
+
+    /**
+
+     * Constructor para la validacion y el almacenamiento , de los dna , definicion de mutantes
+
+     * @param dna  El parámetro dna define el array , contenedor de el dna a validar.
+
+     */
+    @PostMapping (consumes = MediaType.APPLICATION_JSON_VALUE, path = &quot;/mutant&quot;)
+    public ResponseEntity&lt;String&gt; mutant(@RequestBody Dna dna ) {
+
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (mutantService.isMutant(dna)) {</span>
+<span class="fc" id="L50">            return new ResponseEntity&lt;String&gt;( HttpStatus.OK);</span>
+        } else {
+
+<span class="fc" id="L53">            return new ResponseEntity&lt;String&gt;(HttpStatus.FORBIDDEN);</span>
+
+        }
+    }
+
+    /**
+
+     * Constructor para la validacion y construccion de reporte de status
+
+     */
+    @GetMapping(path = &quot;/stats&quot;)
+    public ResponseEntity&lt;StatusModel&gt; status() {
+        StatusModel status;
+<span class="fc" id="L66">        status= mutantService.status();</span>
+
+        if (true) {
+<span class="fc" id="L69">            return new ResponseEntity&lt;StatusModel&gt;(status, HttpStatus.OK);</span>
+        } else {
+
+            return new ResponseEntity&lt;StatusModel&gt;(HttpStatus.FORBIDDEN);
+
+        }
+    }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

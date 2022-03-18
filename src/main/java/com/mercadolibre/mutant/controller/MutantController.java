@@ -12,17 +12,37 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+/**
+
+ * Esta clase define el Controlador Mutans, la recepcion, de cuerpos json o parametros,llamado de los servicio , procesamiento y devuelta de la respuesta solicitada
+
+ * @author: Edison A. Alvear Pabon
+
+ * @version: 18/03/2022/
+
+ */
+
+
+
 @RestController
 @RequestMapping("/v1/")
 
 public class MutantController {
 
+    //Campos de la clase
     @Autowired
     private MutantService mutantService;
 
     private static final Logger LOG = LoggerFactory.getLogger(MutantController.class);
 
 
+    /**
+
+     * Constructor para la validacion y el almacenamiento , de los dna , definicion de mutantes
+
+     * @param dna  El parámetro dna define el array , contenedor de el dna a validar.
+
+     */
     @PostMapping (consumes = MediaType.APPLICATION_JSON_VALUE, path = "/mutant")
     public ResponseEntity<String> mutant(@RequestBody Dna dna ) {
 
@@ -35,7 +55,11 @@ public class MutantController {
         }
     }
 
+    /**
 
+     * Constructor para la validacion y construccion de reporte de status
+
+     */
     @GetMapping(path = "/stats")
     public ResponseEntity<StatusModel> status() {
         StatusModel status;

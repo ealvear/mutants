@@ -14,6 +14,15 @@ import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
+/**
+
+ * Interfaz Repositorio , manejo de informacion de la clase   StatusEnt
+
+ * @author: Edison A. Alvear Pabon
+
+ * @version: 18/03/2022/
+
+ */
 
 //@Configuration
 //@EnableDynamoDBRepositories(basePackages = "com.mercadolibre.mutant.repository.*", includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Repository.class))

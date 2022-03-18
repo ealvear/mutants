@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MutantService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">com.mercadolibre.mutant.service</a> &gt; <span class="el_source">MutantService.java</span></div><h1>MutantService.java</h1><pre class="source lang-java linenums">package com.mercadolibre.mutant.service;
+
+import com.mercadolibre.mutant.domain.StatusEnt;
+import com.mercadolibre.mutant.model.Dna;
+import com.mercadolibre.mutant.model.StatusModel;
+import com.mercadolibre.mutant.repository.StatusRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
+/**
+
+ * Clase Service  MutantService , se encarga de los procesos , de almacenamiento y calculo del status
+
+ * @author: Edison A. Alvear Pabon
+
+ * @version: 18/03/2022/
+
+ */
+
+@Service
+<span class="fc" id="L26">public class MutantService {</span>
+
+<span class="fc" id="L28">    private static final Logger LOG = LoggerFactory.getLogger(MutantService.class);</span>
+
+    @Autowired
+    private StatusRepository statusRepository;
+
+
+
+    /**
+
+     * Metodo status() , Consulta en base de datos , realiza el count , y calcula el ration.
+
+     */
+    public StatusModel status(){
+
+<span class="fc" id="L42">        StatusModel status = new StatusModel();</span>
+
+<span class="fc" id="L44">        int mutan= statusRepository.findByMutant(&quot;S&quot;).size();</span>
+
+<span class="fc" id="L46">        int human= statusRepository.findByMutant(&quot;N&quot;).size();</span>
+
+
+<span class="fc" id="L49">        status.setCount_mutant_dna(mutan);</span>
+
+<span class="fc" id="L51">        status.setCount_human_dna(human);</span>
+
+
+<span class="fc" id="L54">        float ration = (float) (Math.round((float) mutan/human* 100) / 100d);</span>
+<span class="fc" id="L55">        status.setRatio(ration);</span>
+
+
+<span class="fc" id="L58">        return status;</span>
+    }
+
+
+    /**
+     * Metodo isMutant , Realiza el diagnostico de identificar si se encuentra un mutante en el array entregado.
+     * @param dna, array , con el dna
+     */
+
+    public boolean isMutant(Dna dna){
+
+
+<span class="fc" id="L70">        String[] chars = {&quot;A&quot;,&quot;T&quot;,&quot;G&quot;,&quot;C&quot;};</span>
+
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if(checkhorizontal(dna,chars)) {</span>
+<span class="nc" id="L73">            save(dna,true);</span>
+<span class="nc" id="L74">            return true;</span>
+        }
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if(checkVertical(dna,chars)) {</span>
+<span class="fc" id="L77">            save(dna,true);</span>
+<span class="fc" id="L78">            return true;</span>
+        }
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if(checkDiagonal(dna,chars)) {</span>
+<span class="nc" id="L81">            save(dna,true);</span>
+<span class="nc" id="L82">            return true;</span>
+        }
+<span class="fc" id="L84">        save(dna,false);</span>
+<span class="fc" id="L85">        return false;</span>
+    }
+
+    /**
+     * Metodo save() ,realiza el almacenamiento de el dna y si es mutante en la base de datos
+     * @param dna, ,  array , con el dna
+     * @param mutant, , boolean  , con la verificacion de si es o no mutante
+     */
+    private void save(Dna dna, boolean mutant) {
+
+<span class="fc" id="L95">        String cdna = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        for (int i = 0 ; i&lt;dna.getDna().length ; i++){</span>
+<span class="fc" id="L98">            cdna= cdna + dna.getDna()[i];</span>
+        }
+<span class="fc" id="L100">        String mut = &quot;N&quot;;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (mutant){</span>
+<span class="fc" id="L102">            mut=&quot;S&quot;;</span>
+        }
+<span class="fc" id="L104">        StatusEnt statusEnt = new StatusEnt();</span>
+<span class="fc" id="L105">        statusEnt.setDna(cdna);</span>
+<span class="fc" id="L106">        statusEnt.setMutant(mut);</span>
+<span class="fc" id="L107">        boolean band= statusRepository.save(statusEnt);</span>
+
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Metodo checkhorizontal() , verifica si se encuentra un mutante de manera horizontal
+     * @param dna, ,  array , con el dna
+     * @param chars, , array  , con los caracteres a comparar para la distincion de mutantes
+     */
+    private boolean checkhorizontal(Dna dna, String[] chars) {
+<span class="fc" id="L117">        int aux=0;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        for (int i = 0; i &lt; chars.length; i++) {</span>
+<span class="fc" id="L119">            aux = 0;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">            for (int j = 0; j &lt; dna.getDna().length; j++) {</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                for (int k = 0; k &lt; dna.getDna().length; k++) {</span>
+
+
+<span class="fc bfc" id="L124" title="All 2 branches covered.">                    if (chars[i].equals(&quot;&quot;+dna.getDna()[j].charAt(k))) {</span>
+<span class="fc" id="L125">                        aux++;</span>
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">                        if(aux==4){</span>
+<span class="nc" id="L127">                            return true;</span>
+                        }
+                    } else {
+<span class="fc" id="L130">                        aux = 0;</span>
+                    }
+                }
+            }
+        }
+<span class="fc" id="L135">        return false ;</span>
+    }
+
+    /**
+     * Metodo checkVertical() , verifica si se encuentra un mutante de manera Vertical
+     * @param dna, ,  array , con el dna
+     * @param chars, , array  , con los caracteres a comparar para la distincion de mutantes
+     */
+    private boolean checkVertical(Dna dna, String[] chars){
+
+<span class="fc" id="L145">        int aux= 0;</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">        for (int i = 0; i &lt; chars.length; i++) {</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">            for (int j = 0; j &lt; dna.getDna().length; j++) {</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">                for (int k = 0; k &lt; dna.getDna().length; k++) {</span>
+                    //LOG.info(chars[i] +&quot; -&gt; &quot;+ dna.getDna()[k].charAt(j) );
+<span class="fc bfc" id="L150" title="All 2 branches covered.">                    if (chars[i].equals(&quot;&quot;+dna.getDna()[k].charAt(j))){</span>
+<span class="fc" id="L151">                        aux++;</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">                        if(aux==4){</span>
+<span class="fc" id="L153">                            return true;</span>
+                        }
+                    }else {
+<span class="fc" id="L156">                        aux=0;</span>
+                    }
+                }
+            }
+        }
+<span class="fc" id="L161">        return false;</span>
+    }
+
+    /**
+     * Metodo checkDiagonal() , verifica si se encuentra un mutante de manera Diagonal
+     * @param dna, ,  array , con el dna
+     * @param chars, , array  , con los caracteres a comparar para la distincion de mutantes
+     */
+    private boolean checkDiagonal(Dna dna, String[] chars){
+<span class="fc" id="L170">        int aux= 0;</span>
+<span class="fc" id="L171">        int ban=0;</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">        for (int l = 0; l &lt; chars.length; l++) {</span>
+<span class="fc" id="L173">            aux = 0;</span>
+
+<span class="fc bfc" id="L175" title="All 2 branches covered.">            for (int i = 1 - dna.getDna().length ; i &lt; chars.length; i++) {</span>
+<span class="fc" id="L176">                aux = 0;</span>
+<span class="fc bfc" id="L177" title="All 4 branches covered.">                for (int j = -min(0, i), k = max(0,i); j &lt; dna.getDna().length &amp;&amp; k &lt; dna.getDna().length ; j++ , k++) {</span>
+
+                //LOG.info(chars[l] + &quot; = &quot; + dna.getDna()[j].charAt(k) + &quot; -&gt; &quot; + j + &quot;,&quot; + (k));
+<span class="fc bfc" id="L180" title="All 2 branches covered.">                if (chars[l].equals(&quot;&quot; + dna.getDna()[j].charAt(k))) {</span>
+<span class="fc" id="L181">                    aux++;</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">                    if (aux == 4) {</span>
+<span class="nc" id="L183">                        return true;</span>
+                    }
+                } else {
+<span class="fc" id="L186">                    aux = 0;</span>
+                }
+            }
+            }
+        }
+<span class="fc" id="L191">        return false;</span>
+
+    }
+
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

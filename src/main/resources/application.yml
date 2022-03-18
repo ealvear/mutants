@@ -3,9 +3,9 @@ amazon:
           endpoint: dynamodb.us-east-1.amazonaws.com
           prefix: dev
        aws:
-           accesskey: AKIAQ4HAJ3MU6PU2MJR7
-           secretkey: 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
-           region: us-east-1
+           accesskey: // KEY AWS
+           secretkey: //KEY AWS
+           region: //REGION
 server:
     port: 8070
 

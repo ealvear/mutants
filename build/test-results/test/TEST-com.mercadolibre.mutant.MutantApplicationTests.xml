@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mercadolibre.mutant.MutantApplicationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-18T15:45:59" hostname="MacBook-Pro-de-Jorge.local" time="0.369">
+  <properties/>
+  <testcase name="IsNotMutant" classname="com.mercadolibre.mutant.MutantApplicationTests" time="0.302"/>
+  <testcase name="IsMutant" classname="com.mercadolibre.mutant.MutantApplicationTests" time="0.012"/>
+  <testcase name="stats" classname="com.mercadolibre.mutant.MutantApplicationTests" time="0.052"/>
+  <system-out><![CDATA[10:45:51.227 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mercadolibre.mutant.MutantApplicationTests]
+10:45:51.228 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mercadolibre.mutant.MutantApplicationTests]
+10:45:51.230 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mercadolibre.mutant.MutantApplicationTests]
+10:45:51.230 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mercadolibre.mutant.MutantApplicationTests]
+10:45:51.239 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@6624fd5b testClass = MutantApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@124cd8b5 testClass = MutantApplicationTests, locations = '{}', classes = '{class com.mercadolibre.mutant.MutantApplication, class com.mercadolibre.mutant.MutantApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5cbcdb2, [ImportsContextCustomizer@3ba87ccf key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5a7de568, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@b96899c, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@db65edd, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@68d35a20], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]], class annotated with @DirtiesContext [false] with mode [null].
+10:45:51.243 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.mercadolibre.mutant.MutantApplicationTests]
+10:45:51.244 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.mercadolibre.mutant.MutantApplicationTests]
+10:45:51.900 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.6.RELEASE)
+
+2022-03-18 10:45:52.843  INFO 78099 --- [    Test worker] c.m.mutant.MutantApplicationTests        : Starting MutantApplicationTests on MacBook-Pro-de-Jorge.local with PID 78099 (started by edisonalvear in /Users/edisonalvear/Documents/Pruebas /mutantes)
+2022-03-18 10:45:52.845  INFO 78099 --- [    Test worker] c.m.mutant.MutantApplicationTests        : The following profiles are active: test
+2022-03-18 10:45:53.720  INFO 78099 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data DynamoDB repositories in DEFAULT mode.
+2022-03-18 10:45:53.841  INFO 78099 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 103ms. Found 1 DynamoDB repository interfaces.
+2022-03-18 10:45:56.036  INFO 78099 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'appConfig' of type [com.mercadolibre.mutant.config.AppConfig$$EnhancerBySpringCGLIB$$393f8032] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 10:45:56.930  INFO 78099 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'amazonDynamoDB' of type [com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 10:45:57.013  INFO 78099 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'dynamoDB-DynamoDBMapperConfig' of type [com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 10:45:57.582  INFO 78099 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-03-18 10:45:57.607  INFO 78099 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-18 10:45:57.608  INFO 78099 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2022-03-18 10:45:57.762  INFO 78099 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-18 10:45:57.762  INFO 78099 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4886 ms
+2022-03-18 10:45:58.129  INFO 78099 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d826d445-1542-4b3d-a862-960df11270e8
+
+2022-03-18 10:45:58.485  INFO 78099 --- [    Test worker] o.s.s.d.d.r.s.DynamoDBRepositoryFactory  : Spring Data DynamoDB Version: 5.1.0 (2.1)
+2022-03-18 10:45:58.485  INFO 78099 --- [    Test worker] o.s.s.d.d.r.s.DynamoDBRepositoryFactory  : Spring Data Version:          2.2.6.RELEASE
+2022-03-18 10:45:58.485  INFO 78099 --- [    Test worker] o.s.s.d.d.r.s.DynamoDBRepositoryFactory  : AWS SDK Version:              1.11.443
+2022-03-18 10:45:58.485  INFO 78099 --- [    Test worker] o.s.s.d.d.r.s.DynamoDBRepositoryFactory  : Java Version:                 11.0.12 - Java HotSpot(TM) 64-Bit Server VM 11.0.12+8-LTS-237
+2022-03-18 10:45:58.486  INFO 78099 --- [    Test worker] o.s.s.d.d.r.s.DynamoDBRepositoryFactory  : Platform Details:             Mac OS X 11.2
+2022-03-18 10:45:58.486  WARN 78099 --- [    Test worker] o.s.s.d.d.r.s.DynamoDBRepositoryFactory  : This Spring Data DynamoDB implementation might not be compatible with the available Spring Data classes on the classpath!
+NoDefClassFoundExceptions or similar might occur!
+2022-03-18 10:45:59.029  INFO 78099 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b0a1120, org.springframework.security.web.context.SecurityContextPersistenceFilter@7bc3599e, org.springframework.security.web.header.HeaderWriterFilter@7325f03c, org.springframework.web.filter.CorsFilter@9904621, org.springframework.security.web.authentication.logout.LogoutFilter@311a9998, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28b6b7a5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7043618, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@340cf9a4, org.springframework.security.web.session.SessionManagementFilter@40699d1f, org.springframework.security.web.access.ExceptionTranslationFilter@3fb2ed99, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@17faeb34]
+2022-03-18 10:45:59.202  INFO 78099 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 10:45:59.358  INFO 78099 --- [    Test worker] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-03-18 10:45:59.394  INFO 78099 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2022-03-18 10:45:59.395  INFO 78099 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-03-18 10:45:59.420  INFO 78099 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 25 ms
+2022-03-18 10:45:59.493  INFO 78099 --- [    Test worker] d.d.r.u.Entity2DynamoDBTableSynchronizer : Checking repository classes with DynamoDB tables prueba_status for ContextRefreshedEvent
+2022-03-18 10:45:59.524  INFO 78099 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64302 (http) with context path ''
+2022-03-18 10:45:59.528  INFO 78099 --- [    Test worker] c.m.mutant.MutantApplicationTests        : Started MutantApplicationTests in 7.616 seconds (JVM running for 11.258)
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /v1/mutant
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"63"]
+             Body = {"dna":["ATGCGA","ATGTAG","CCACTT","AGTAAA","CACCAA","TCACTG"]}
+    Session Attrs = {}
+
+Handler:
+             Type = com.mercadolibre.mutant.controller.MutantController
+           Method = com.mercadolibre.mutant.controller.MutantController#mutant(Dna)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 403
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /v1/mutant
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"63"]
+             Body = {"dna":["ATGCGA","ATGTAG","CTACTT","AGTAAA","CACTAA","TCACTG"]}
+    Session Attrs = {}
+
+Handler:
+             Type = com.mercadolibre.mutant.controller.MutantController
+           Method = com.mercadolibre.mutant.controller.MutantController#mutant(Dna)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /v1/stats
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.mercadolibre.mutant.controller.MutantController
+           Method = com.mercadolibre.mutant.controller.MutantController#status()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = application/json
+             Body = {
+  "count_mutant_dna" : 1,
+  "count_human_dna" : 1,
+  "ratio" : 1.0
+}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

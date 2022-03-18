@@ -1,10 +1,20 @@
 package com.mercadolibre.mutant.model;
 
+/**
+
+ * Clase StatusModel, modelo de respuesta status
+
+ * @author: Edison A. Alvear Pabon
+
+ * @version: 18/03/2022/
+
+ */
+
 public class StatusModel {
 
     int count_mutant_dna;
     int count_human_dna;
-    Double ratio;
+    float ratio;
 
     public int getCount_mutant_dna() {
         return count_mutant_dna;
@@ -22,11 +32,11 @@ public class StatusModel {
         this.count_human_dna = count_human_dna;
     }
 
-    public Double getRatio() {
+    public float getRatio() {
         return ratio;
     }
 
-    public void setRatio(Double ratio) {
+    public void setRatio(float ratio) {
         this.ratio = ratio;
     }
 }

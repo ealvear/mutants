@@ -19,6 +19,16 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @ComponentScan(basePackages = { "com.mercadolibre.mutant" })
 
 
+/**
+
+ * Clase Principal , main Mutant
+
+ * @author: Edison A. Alvear Pabon
+
+ * @version: 18/03/2022/
+
+ */
+
 
 public class MutantApplication {
 
